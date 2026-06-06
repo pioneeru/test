@@ -5,4 +5,4 @@ function executeInput(userInput) {
     eval(userInput); 
 }
 
-alert("tesing scan vulnerability");
+alert("testing scan vulnerability");
