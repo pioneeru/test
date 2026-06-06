@@ -6,3 +6,4 @@ function executeInput(userInput) {
 }
 
 alert("testing scan vulnerability");
+executeInput("test");
