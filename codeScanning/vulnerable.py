@@ -7,15 +7,15 @@ app = Flask(__name__)
 ADMIN_PASSWORD = "SuperSecretPassword123!" 
 
 @app.route("/login")
-def login():
-    # 🚨 ALERT 2: SQL Injection (Unsanitized user input concatenated into a query)
-    user_input = request.args.get("username")
+# def login():
+#     # 🚨 ALERT 2: SQL Injection (Unsanitized user input concatenated into a query)
+#     user_input = request.args.get("username")
     
-    conn = sqlite3.connect("users.db")
-    cursor = conn.cursor()
+#     conn = sqlite3.connect("users.db")
+#     cursor = conn.cursor()
     
-    # CodeQL flags this line as a high-severity flaw
-    query = "SELECT * FROM users WHERE username = '" + user_input + "'"
-    cursor.execute(query)
+#     # CodeQL flags this line as a high-severity flaw
+#     query = "SELECT * FROM users WHERE username = '" + user_input + "'"
+#     cursor.execute(query)
     
-    return "Query executed."
+#     return "Query executed."
