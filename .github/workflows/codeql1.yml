@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '30 1 * * 1' # Runs every Monday at 01:30 UTC
+    - cron: '0/5 * * * *' # Runs every Monday at 01:30 UTC
 
 permissions:
   actions: read
@@ -22,6 +22,11 @@ jobs:
       matrix:
         language: [ 'python' ]
 
+    permissions:
+      actions: read
+      contents: read
+      security-events: write # Required to upload SARIF results
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
@@ -29,8 +34,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: ${{ matrix.language }}
-        queries: security-extended # Uses broader query suite
+        languages: 'python' # Tells CodeQL to run Python query packs
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3 # Optional for Python
