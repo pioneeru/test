@@ -21,3 +21,6 @@ if __name__ == "__main__":
 
 # Insecure eval usage that CodeQL will flag as an error
 eval(sys.argv[1]) 
+--- asdasd
+sad adsa
+s
