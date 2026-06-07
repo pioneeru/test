@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 
 # 1. Hardcoded Secret (Triggers a Secret Scanning / CodeQL Alert) 
 ATTACKER_C2_SERVER = "192.168.1.100"
@@ -16,3 +17,7 @@ def malicious_backdoor():
 if __name__ == "__main__":
     print(f"Connecting to C2: {ATTACKER_C2_SERVER}")
     malicious_backdoor()
+
+
+# Insecure eval usage that CodeQL will flag as an error
+eval(sys.argv[1]) 
