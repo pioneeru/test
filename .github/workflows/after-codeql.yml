@@ -1,0 +1,24 @@
+name: Notify on CodeQL Completion
+on:
+  workflow_run:
+    workflows: ["CodeQL"] # The exact name of your CodeQL analysis workflow file
+    types:
+      - completed # Triggers when the scan finishes
+
+jobs:
+  on_codeql_success:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: CodeQL Analysis Succeeded
+        run: echo "The CodeQL analysis passed and completed successfully!"
+
+  on_codeql_failure:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: CodeQL Analysis Failed
+        run: |
+          echo "CodeQL found vulnerabilities or the build failed."
+          # Add a curl command here to raise an external event, call a Webhook, 
+          # or trigger a repository_dispatch API event
