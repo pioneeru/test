@@ -1,7 +1,7 @@
 name: Notify on CodeQL Completion
 on:
   workflow_run:
-    workflows: ["CodeQL"] # The exact name of your CodeQL analysis workflow file
+    workflows: ["codeql.yml", "codeql1.yml"] # The exact name of your CodeQL analysis workflow file
     types:
       - completed # Triggers when the scan finishes
 
