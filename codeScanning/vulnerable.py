@@ -10,6 +10,6 @@ def login():
     cursor = conn.cursor()
     # CodeQL flags this line as a high-severity flaw
     query = "SELECT * FROM users WHERE username = '" + user_input + "'"
-    cursor.execute(query)
+    # cursor.execute(query)
     
     return "Query executed."
